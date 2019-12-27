@@ -10,6 +10,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -66,7 +68,23 @@ EditText searchEditText = findViewById(R.id.movie_search);
             }
         });
 
-        compositeDisposable.add(RxTextView.textChangeEvents(searchEditText)
+   /*     searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            movieAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });*/
+       compositeDisposable.add(RxTextView.textChangeEvents(searchEditText)
                 .skipInitialValue()
                 .debounce(300, TimeUnit.MICROSECONDS)
                 .distinctUntilChanged()
@@ -77,7 +95,7 @@ EditText searchEditText = findViewById(R.id.movie_search);
                     public void onNext(TextViewTextChangeEvent textViewTextChangeEvent) {
                         movieAdapter.getFilter().filter(textViewTextChangeEvent.getText());
                         Log.d(LOG_TAG, "The value seached "+ textViewTextChangeEvent);
-                        movieAdapter.notifyDataSetChanged();
+                     //   movieAdapter.notifyDataSetChanged();
                     }
 
                     @Override

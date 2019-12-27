@@ -67,7 +67,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return filterMovies.size();
     }
 
     @Override
@@ -98,7 +98,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                movies = (ArrayList<Movie>) results.values;
+                filterMovies = (ArrayList<Movie>) results.values;
                 notifyDataSetChanged();
             }
         };
