@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SearchRxJavaFromAPI</string>
+    <string name="api_key">e2e2cae1c5b9256b4dc97f8c430165dc</string>
+    <string name="movie_info">Movie Info</string>
+</resources>
